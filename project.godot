@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameConstants="*res://Globals/game_constants.gd"
 VehicleConfiguration="*res://Globals/vehicle_configuration.gd"
+GameConstants="*res://Globals/game_constants.gd"
 
 [input]
 

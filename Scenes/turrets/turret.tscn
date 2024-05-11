@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8bpc37l5vvyg"]
+
+[ext_resource type="Script" path="res://Scenes/turrets/turret.gd" id="1_yh10a"]
+[ext_resource type="Texture2D" uid="uid://bb8h4dxxcwmmw" path="res://Assets/tank_turret_empty.png" id="2_wj6j4"]
+[ext_resource type="PackedScene" uid="uid://b6kkcll15ts6t" path="res://Scenes/camera/player_controled_camera.tscn" id="3_glbsb"]
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_yh10a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_wj6j4")
+
+[node name="player_controled_camera" parent="." instance=ExtResource("3_glbsb")]
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="left_barrel" type="Node2D" parent="."]
+
+[node name="weapon_slot" type="Node2D" parent="left_barrel"]
+
+[node name="left_barrel_pos" type="Marker2D" parent="left_barrel"]
+position = Vector2(14, -13)
+
+[node name="right_barrel" type="Node2D" parent="."]
+
+[node name="weapon_slot" type="Node2D" parent="right_barrel"]
+
+[node name="right_barrel_pos" type="Marker2D" parent="right_barrel"]
+position = Vector2(14, 14)
