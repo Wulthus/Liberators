@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dd1qnqnibqf4k"
+path="res://.godot/imported/Tank Turret Clunks 2 - QuickSounds.com.mp3-cd0745bff62fc784a8eb6c2f1d666ec1.mp3str"
+
+[deps]
+
+source_file="res://Assets/sounds/Tank Turret Clunks 2 - QuickSounds.com.mp3"
+dest_files=["res://.godot/imported/Tank Turret Clunks 2 - QuickSounds.com.mp3-cd0745bff62fc784a8eb6c2f1d666ec1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

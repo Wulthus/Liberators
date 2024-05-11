@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgpflvduepf2n"]
+
+[ext_resource type="Script" path="res://Scenes/multiplayer_scene.gd" id="1_syu04"]
+[ext_resource type="PackedScene" uid="uid://defhb87pqjeuj" path="res://Scenes/player_character.tscn" id="2_7qmvy"]
+[ext_resource type="Texture2D" uid="uid://dn5ovqx0x75de" path="res://icon.svg" id="4_oo0ta"]
+
+[node name="multiplayer_scene" type="Node2D"]
+script = ExtResource("1_syu04")
+player_scene = ExtResource("2_7qmvy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Buttons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_top = 0.909
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.96796
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Buttons"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -57.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "HELLO THERE!"
+alignment = 1
+
+[node name="join_button" type="Button" parent="CanvasLayer/Buttons/HBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+tooltip_text = "HELLO THERE"
+text = "JOIN
+"
+
+[node name="host_button" type="Button" parent="CanvasLayer/Buttons/HBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "GENERAL KENOBI"
+text = "HOST
+"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/player_character.tscn")
+spawn_path = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(574, 287)
+texture = ExtResource("4_oo0ta")
+
+[connection signal="pressed" from="CanvasLayer/Buttons/HBoxContainer/join_button" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/HBoxContainer/host_button" to="." method="_on_host_button_pressed"]

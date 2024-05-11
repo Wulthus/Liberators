@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://22dr7pswun0x"]
+
+[ext_resource type="Texture2D" uid="uid://851hsro86krq" path="res://Assets/barrel_1.png" id="1_fiv67"]
+[ext_resource type="Script" path="res://Scenes/weapons/weapon.gd" id="1_nfx3j"]
+
+[node name="weapon" type="Node2D"]
+script = ExtResource("1_nfx3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(23, 0)
+texture = ExtResource("1_fiv67")

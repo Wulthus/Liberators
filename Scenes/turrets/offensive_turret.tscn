@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8bpc37l5vvyg"]
+
+[ext_resource type="Script" path="res://Scenes/turrets/offensive_turret.gd" id="1_pqxyc"]
+[ext_resource type="Texture2D" uid="uid://bb8h4dxxcwmmw" path="res://Assets/tank_turret_empty.png" id="2_1utxp"]
+[ext_resource type="PackedScene" uid="uid://b6kkcll15ts6t" path="res://Scenes/camera/player_controled_camera.tscn" id="3_wa7mj"]
+[ext_resource type="AudioStream" uid="uid://b1wvdetqnsxad" path="res://Assets/sounds/turret_heavy_loop.wav" id="4_51kkc"]
+[ext_resource type="AudioStream" uid="uid://comlci2uanyrm" path="res://Assets/sounds/turret_heavy_stop.wav" id="5_lurq1"]
+
+[node name="Offensive_Turret" type="Node2D"]
+script = ExtResource("1_pqxyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_1utxp")
+
+[node name="player_controled_camera" parent="." instance=ExtResource("3_wa7mj")]
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="turret_heavy_loop" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("4_51kkc")
+volume_db = 10.0
+pitch_scale = 0.86
+
+[node name="turret_heavy_stopped" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("5_lurq1")
+volume_db = -9.0
+
+[node name="left_barrel" type="Node2D" parent="."]
+
+[node name="weapon_slot" type="Node2D" parent="left_barrel"]
+
+[node name="left_barrel_pos" type="Marker2D" parent="left_barrel"]
+position = Vector2(14, -13)
+
+[node name="right_barrel" type="Node2D" parent="."]
+
+[node name="weapon_slot" type="Node2D" parent="right_barrel"]
+
+[node name="right_barrel_pos" type="Marker2D" parent="right_barrel"]
+position = Vector2(14, 14)

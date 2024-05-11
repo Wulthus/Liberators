@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://bw6e7n8er008w"]
+
+[ext_resource type="Script" path="res://tank_chasis.gd" id="1_o6pu3"]
+[ext_resource type="Texture2D" uid="uid://u0daqrw27ysq" path="res://Assets/tank_body.png" id="2_3rx42"]
+[ext_resource type="PackedScene" uid="uid://c8bpc37l5vvyg" path="res://Scenes/turret.tscn" id="2_bfpnx"]
+[ext_resource type="Script" path="res://Scenes/chasis_camera.gd" id="3_hei0d"]
+[ext_resource type="AudioStream" uid="uid://cb8ueqbwk1p1v" path="res://Assets/sounds/fwd_gear.mp3" id="3_ols4e"]
+[ext_resource type="AudioStream" uid="uid://cphaana6mkhnt" path="res://Assets/sounds/rws_gear.mp3" id="4_41ap3"]
+[ext_resource type="AudioStream" uid="uid://tbneuxvfqkrc" path="res://Assets/sounds/engine_idle.wav" id="5_a5xx4"]
+[ext_resource type="AudioStream" uid="uid://tpkx8gx87fi5" path="res://Assets/sounds/engine_revup.wav" id="6_l85fb"]
+[ext_resource type="AudioStream" uid="uid://dy5fo03v0evpo" path="res://Assets/sounds/engine_revloop.wav" id="7_iijmp"]
+[ext_resource type="AudioStream" uid="uid://dfjxd6i4ai3b1" path="res://Assets/sounds/engine_revdown.wav" id="8_ebebt"]
+[ext_resource type="AudioStream" uid="uid://bykgmy1ch2lph" path="res://Assets/sounds/.brakeswav.wav" id="9_y0dgo"]
+[ext_resource type="AudioStream" uid="uid://df00rtigksygg" path="res://Assets/sounds/tracks.wav" id="10_3kb8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1mxy"]
+size = Vector2(134, 82)
+
+[node name="tank_chasis" type="Node2D"]
+script = ExtResource("1_o6pu3")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("2_3rx42")
+metadata/_edit_lock_ = true
+
+[node name="Turret" parent="RigidBody2D" instance=ExtResource("2_bfpnx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_i1mxy")
+debug_color = Color(0.435294, 0.254902, 0.0509804, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="chasis_camera" type="Camera2D" parent="RigidBody2D"]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 4.0
+script = ExtResource("3_hei0d")
+
+[node name="Markers" type="Node2D" parent="RigidBody2D"]
+position = Vector2(-4, 1)
+
+[node name="reverse_velocity_vector" type="Marker2D" parent="RigidBody2D/Markers"]
+position = Vector2(-100, 0)
+
+[node name="right_cornnering_force_vector" type="Marker2D" parent="RigidBody2D/Markers"]
+position = Vector2(0, 100)
+
+[node name="forward_velocity-Vector" type="Marker2D" parent="RigidBody2D/Markers"]
+position = Vector2(100, 0)
+
+[node name="left_cornering_force_vector" type="Marker2D" parent="RigidBody2D/Markers"]
+position = Vector2(0, -100)
+
+[node name="center_of_gravity" type="Marker2D" parent="RigidBody2D/Markers"]
+
+[node name="Sounds" type="Node2D" parent="RigidBody2D"]
+
+[node name="forward_gear" type="AudioStreamPlayer2D" parent="RigidBody2D/Sounds"]
+stream = ExtResource("3_ols4e")
+
+[node name="reverse_gear" type="AudioStreamPlayer2D" parent="RigidBody2D/Sounds"]
+stream = ExtResource("4_41ap3")
+
+[node name="engine_idle" type="AudioStreamPlayer2D" parent="RigidBody2D/Sounds"]
+stream = ExtResource("5_a5xx4")
+volume_db = -11.0
+
+[node name="engine_revup" type="AudioStreamPlayer2D" parent="RigidBody2D/Sounds"]
+stream = ExtResource("6_l85fb")
+volume_db = -11.0
+
+[node name="engine_revloop" type="AudioStreamPlayer2D" parent="RigidBody2D/Sounds"]
+stream = ExtResource("7_iijmp")
+volume_db = -11.0
+
+[node name="engine_revdown" type="AudioStreamPlayer2D" parent="RigidBody2D/Sounds"]
+stream = ExtResource("8_ebebt")
+volume_db = -11.0
+
+[node name="brakes" type="AudioStreamPlayer2D" parent="RigidBody2D/Sounds"]
+stream = ExtResource("9_y0dgo")
+volume_db = -16.0
+pitch_scale = 0.6
+
+[node name="tracks" type="AudioStreamPlayer2D" parent="RigidBody2D/Sounds"]
+stream = ExtResource("10_3kb8q")
