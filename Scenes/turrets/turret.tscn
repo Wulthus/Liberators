@@ -1,31 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8bpc37l5vvyg"]
+[gd_scene load_steps=6 format=3 uid="uid://booig53s866l"]
 
 [ext_resource type="Script" path="res://Scenes/turrets/turret.gd" id="1_yh10a"]
-[ext_resource type="Texture2D" uid="uid://bb8h4dxxcwmmw" path="res://Assets/tank_turret_empty.png" id="2_wj6j4"]
 [ext_resource type="PackedScene" uid="uid://b6kkcll15ts6t" path="res://Scenes/camera/player_controled_camera.tscn" id="3_glbsb"]
+[ext_resource type="Script" path="res://Scenes/turrets/components/rotation.gd" id="4_56qq4"]
+[ext_resource type="Script" path="res://Scenes/turrets/components/sounds.gd" id="4_urjml"]
+[ext_resource type="Script" path="res://Scenes/turrets/components/weapons.gd" id="5_celob"]
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_yh10a")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_wj6j4")
+[node name="rotation" type="Node2D" parent="."]
+script = ExtResource("4_56qq4")
 
 [node name="player_controled_camera" parent="." instance=ExtResource("3_glbsb")]
 
 [node name="sounds" type="Node2D" parent="."]
+script = ExtResource("4_urjml")
 
-[node name="left_barrel" type="Node2D" parent="."]
+[node name="weapons" type="Node2D" parent="."]
+script = ExtResource("5_celob")
 
-[node name="weapon_slot" type="Node2D" parent="left_barrel"]
+[node name="left_barrel" type="Node2D" parent="weapons"]
+metadata/_edit_lock_ = true
 
-[node name="left_barrel_pos" type="Marker2D" parent="left_barrel"]
-position = Vector2(14, -13)
+[node name="weapon_slot" type="Node2D" parent="weapons/left_barrel"]
+metadata/_edit_lock_ = true
 
-[node name="right_barrel" type="Node2D" parent="."]
+[node name="right_barrel" type="Node2D" parent="weapons"]
+metadata/_edit_lock_ = true
 
-[node name="weapon_slot" type="Node2D" parent="right_barrel"]
-
-[node name="right_barrel_pos" type="Marker2D" parent="right_barrel"]
-position = Vector2(14, 14)
+[node name="weapon_slot" type="Node2D" parent="weapons/right_barrel"]
+metadata/_edit_lock_ = true

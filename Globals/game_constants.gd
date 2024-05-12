@@ -9,5 +9,20 @@ var turret_props = {
 		"audio" = {
 			"min_sound_length" = 0.2,
 		},
+		"sprite" = {
+			"scale" = 0.8,
+		}
+	},
+	"defensive_turret" = {
+		"name" = "defensive_turret",
+		"weapon_path" = "res://Scenes/weapons/{weapon}.tscn",
+		"turn_rate" = 0.015,
+		"minimum_angle" = 0.15,
+		"audio" = {
+			"min_sound_length" = 0.2,
+		},
+		"sprite" = {
+			"scale" = 0.5,
+		}
 	},
 }

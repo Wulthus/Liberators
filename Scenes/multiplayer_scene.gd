@@ -28,8 +28,8 @@ func add_turrets():
 	var vehicle = get_node(player_vehicle_name)
 	var vehicle_body = vehicle.get_node("RigidBody2D")
 
-	var offensive_turret_scene = preload("res://Scenes/turrets/off_turret.tscn");
-	var defensive_turret_scene = preload("res://Scenes/turrets/defensive_turret.tscn");
+	var offensive_turret_scene = preload("res://Scenes/turrets/offensive_turret/offensive_turret.tscn");
+	var defensive_turret_scene = preload("res://Scenes/turrets/defensive_turret/defensive_turret.tscn");
 
 	var def_turr_pos = vehicle.get_turret_position("defensive")
 	var off_turr_pos = vehicle.get_turret_position("offensive")
@@ -42,6 +42,7 @@ func add_turrets():
 	offensive_turret.add_weapons();
 	vehicle_body.add_child(defensive_turret);
 	defensive_turret.position = def_turr_pos
+	defensive_turret.add_weapons();
 
 #func add_character(id = 1):
 #	var new_player = player_scene.instantiate()
