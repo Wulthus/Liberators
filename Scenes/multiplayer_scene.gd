@@ -1,7 +1,6 @@
 extends Node2D
 
 var test_peer = ENetMultiplayerPeer.new()
-#var vehicle_scene = preload("res://Scenes/vehicles/tank_chasis.tscn")
 @export var player_scene: PackedScene
 
 var player_vehicle_name = "player_vehicle"

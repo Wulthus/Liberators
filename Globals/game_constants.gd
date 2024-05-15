@@ -1,5 +1,26 @@
 extends Node
 
+var vehicle_props = {
+	"dynamics" = {
+		"minimum_velocity" = 2.0,
+	}
+
+}
+
+var vehicle_type_props = {
+	"tank" = {
+		"engine_power": 150.0,
+		"brake_power": 150.0,
+		"mass_factor": 2.5,
+		"torque": 3.0,
+		"inertia_factor": 2.5,
+		"cornering_force_factor": 2000.0,
+		"rolling_resistance": 3.0,
+	
+		"max_speed": 216.0,
+	}
+}
+
 var turret_props = {
 	"offensive_turret" = {
 		"name" = "offensive_turret",

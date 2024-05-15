@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhfrfpin1nm7f"]
+
+[ext_resource type="PackedScene" uid="uid://bw6e7n8er008w" path="res://Scenes/vehicles/vehicle.tscn" id="1_qlxj1"]
+[ext_resource type="Texture2D" uid="uid://u0daqrw27ysq" path="res://Assets/tank_body.png" id="2_3ss5y"]
+[ext_resource type="Script" path="res://Scenes/vehicles/tank/props.gd" id="2_b5e50"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3otdc"]
+size = Vector2(134, 82)
+
+[node name="vehicle" instance=ExtResource("1_qlxj1")]
+
+[node name="physics@center_of_gravity" type="Marker2D" parent="." index="0"]
+metadata/_edit_lock_ = true
+
+[node name="props" type="Node2D" parent="." index="1"]
+script = ExtResource("2_b5e50")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_3otdc")
+debug_color = Color(0.435294, 0.254902, 0.0509804, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_3ss5y")
+metadata/_edit_lock_ = true
+
+[node name="offensive_turret_pos" type="Marker2D" parent="weapons" index="0"]
+position = Vector2(11, 0)
+
+[node name="defensive_turret_pos" type="Marker2D" parent="weapons" index="1"]
+position = Vector2(-36, 0)
+
+[node name="forward_velocity_vector" type="Marker2D" parent="markers" index="0"]
+position = Vector2(104, -1)
+metadata/_edit_lock_ = true
+
+[node name="reverse_velocity_vector" type="Marker2D" parent="markers" index="1"]
+position = Vector2(-96, -1)
+metadata/_edit_lock_ = true

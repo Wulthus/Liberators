@@ -1,6 +1,6 @@
 extends Node2D
 
-func process(_delta):
+func _process(_delta):
 	if Input.is_action_pressed("fire_left"):
 		var left_weapon = $left_barrel/weapon_slot.get_node("weapon")
 		left_weapon.fire()

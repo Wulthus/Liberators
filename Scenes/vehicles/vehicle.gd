@@ -2,25 +2,62 @@ extends Node2D
 
 #-----------------------------------------------------------STATE & INITIALIZATION
 
-var props = {
-	"engine_power": 150.0,
-	"brake_power": 150.0,
-	"mass_factor": 2.5,
-	"torque": 3.0,
-	"inertia_factor": 2.5,
-	"cornering_force_factor": 2000.0,
-	"rolling_resistance": 3.0,
+
+
+var props = {}
+	if Input.is_action_pressed("forward"):
+		match state.gear:
+			"forward":
+				state.throttle_applied = true
+				accelerate(forward_vector, vehicle_position, props.engine_power)
+				update_velocity()
+			"reverse":
+				apply_brakes("full")
+				update_velocity()
+				brake(-state.velocity, props.brake_power)
+			_:
+				print("Error: tank_chasis forward movement match statement did not recognise following gear setting: ", state.gear)
+				
+	if Input.is_action_just_released("forward"):
+		match state.gear:
+			"forward":
+				state.throttle_applied = false
+			"reverse":
+				state.brakes_applied = false
+			_:
+				print("Error: tank_chasis forward movement match statement did not recognise following gear setting: ", state.gear)
+			
+	if Input.is_action_pressed("reverse"):
+		match state.gear:
+			"forward":
+				apply_brakes("full")
+				$RigidBody2D/Sounds/brakes.set_pitch_scale(0.4)
+				update_velocity()
+				brake(-state.velocity, props.brake_power)
+			"reverse":
+				state.throttle_applied = true
+				accelerate(reverse_vector, vehicle_position, props.engine_power)
+				update_velocity()
+			_:
+				print("Error: tank_chasis reverse movement match statement did not recognise following gear setting: ", state.gear)
 	
-	"max_speed": 216.0,
+	if Input.is_action_just_released("reverse"):
+		match state.gear:
+			"forward":
+				state.brakes_applied = false
+			"reverse":
+				state.throttle_applied = false
+			_:
+				print("Error: tank_chasis reverse movement match statement did not recognise following gear setting: ", state.gear)		
 }
 
 var state = {
 	"gear": "forward",
 	"throttle_applied": false,
 	"brakes_applied": false,
-	"velocity": Vector2(0, 0),
-	"angular_velocity": 0,
-	"stopped": true,
+
+
+
 	"slip_angle": 0.0,
 	"env_static_resistance_factor": 0.03,
 	"env_dynamic_resistance_factor": 0.25,
@@ -49,43 +86,40 @@ func get_turret_position(type):
 func _physics_process(_delta):
 #-----------------------------------------------------------MOVEMENT
 
-	var vehicle_position: Vector2 = $RigidBody2D.global_position
-	var forward_vector: Vector2 = $"RigidBody2D/Markers/forward_velocity-Vector".global_position
-	var reverse_vector: Vector2 = $RigidBody2D/Markers/reverse_velocity_vector.global_position
-	var left_vector: Vector2 = $RigidBody2D/Markers/left_cornering_force_vector.global_position
-	var right_vector: Vector2 = $RigidBody2D/Markers/right_cornnering_force_vector.global_position
-	state.angular_velocity =  $RigidBody2D.get_angular_velocity()
-	update_velocity()
+#	var vehicle_position: Vector2 = $RigidBody2D.global_position
+#	var forward_vector: Vector2 = $"RigidBody2D/Markers/forward_velocity-Vector".global_position
+#	var reverse_vector: Vector2 = $RigidBody2D/Markers/reverse_velocity_vector.global_position
+#	var left_vector: Vector2 = $RigidBody2D/Markers/left_cornering_force_vector.global_position
+#	var right_vector: Vector2 = $RigidBody2D/Markers/right_cornnering_force_vector.global_position
+#	state.angular_velocity =  $RigidBody2D.get_angular_velocity()
+#	update_velocity()
 	
 #----------------------------------------------------------DETECTING STOPPED
-	if (
-	state.velocity.x < 2.0 && 
-	state.velocity.x > -2.0 && 
-	state.velocity.y < 2.0 && 
-	state.velocity.y > -2.0 &&
-	state.angular_velocity != 0
-	):
-		state.stopped = true
-	else:
-		state.stopped = false
+#	if (
+#	state.velocity.x < 2.0 && 
+#	state.velocity.x > -2.0 && 
+#	state.velocity.y < 2.0 && 
+#	state.velocity.y > -2.0 &&
+#	state.angular_velocity != 0
+#	):
+#		state.stopped = true
+#	else:
+#		state.stopped = false
 			
 #-------------------------------------------------SLIP ANGLE AND CORNERING FORCE
-	if state.stopped == false:
-		state.slip_angle = (forward_vector - vehicle_position).angle_to(state.velocity)
-	else:
-		state.slip_angle = int(0.0)
-	
-	if state.stopped == false:
-		if (
-			state.slip_angle < 0.0 &&
-			state.slip_angle > -3.14
-			):
-			cornering(right_vector, state.slip_angle, props.cornering_force_factor, vehicle_position)
-		elif (
-			state.slip_angle > 0.0 &&
-			state.slip_angle < 3.14			
-			):
-			cornering(left_vector, state.slip_angle, props.cornering_force_factor, vehicle_position)
+
+#
+#	if state.stopped == false:
+#		if (
+#			state.slip_angle < 0.0 &&
+#			state.slip_angle > -3.14
+#			):
+#			cornering(right_vector, state.slip_angle, props.cornering_force_factor, vehicle_position)
+#		elif (
+#			state.slip_angle > 0.0 &&
+#			state.slip_angle < 3.14			
+#			):
+#			cornering(left_vector, state.slip_angle, props.cornering_force_factor, vehicle_position)
 		
 #-----------------------------------------------------SHIFTING GEARS
 	
@@ -176,13 +210,7 @@ func _physics_process(_delta):
 	if state.angular_velocity < 0 && Input.is_action_pressed("left_turn") == false:
 		$RigidBody2D.apply_torque(props.rolling_resistance)
 		
-#-----------------------------------------------------RESISTANCE
-		
-	if state.stopped == false:
-		var factor = abs((state.env_dynamic_resistance_factor)*sin(state.slip_angle))+state.env_static_resistance_factor
-		update_velocity()
-		resistance(state.velocity, factor)
-		update_velocity()
+
 
 #----------------------------------------------------SOUNDS
 
@@ -235,27 +263,15 @@ func _physics_process(_delta):
 		
 #---------------------------------------------------DYNAMICS FUNCTIONS
 
-func update_velocity():
-	state.velocity = $RigidBody2D.get_linear_velocity()
+
 		
-func accelerate(direction, pos, factor):
-	var acceleration_vector = ((direction - pos).normalized()) * factor
-	$RigidBody2D.apply_central_force(acceleration_vector)
+
 	
-func brake(vector, factor):
-	if state.stopped == false:
-		$RigidBody2D.apply_central_force((vector.normalized()) * factor)
+
 		
-func resistance(velocity, factor):
-	var force_multiplyer = ((1.0+factor)**(abs(velocity.x) + abs(velocity.y)))-1
-	var resistance_vector = (-velocity.normalized() * force_multiplyer) * factor
-	$RigidBody2D.apply_central_force(resistance_vector)
+
 		
-func cornering(direction, slip_angle, max_value, pos):
-	var slip_angle_rad = slip_angle
-	var force_multiplier = abs(max_value * sin(slip_angle_rad))
-	var cornering_force: Vector2 = (direction - pos).normalized() * force_multiplier
-	$RigidBody2D.apply_central_force(cornering_force)
+
 	
 func apply_brakes(force = "full"):
 	state.brakes_applied = true
@@ -269,7 +285,8 @@ func apply_brakes(force = "full"):
 		_:
 			print("ERROR: apply_brakes function match statement did not recognise following force: ", force)
 	
-	
+#-------------------------------------------------------SETTERS GETTERS
+
 	
 	
 	

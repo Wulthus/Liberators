@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://booig53s866l"]
+[gd_scene load_steps=7 format=3 uid="uid://booig53s866l"]
 
 [ext_resource type="Script" path="res://Scenes/turrets/turret.gd" id="1_yh10a"]
+[ext_resource type="Texture2D" uid="uid://bb8h4dxxcwmmw" path="res://Assets/tank_turret_empty.png" id="2_avcqi"]
 [ext_resource type="PackedScene" uid="uid://b6kkcll15ts6t" path="res://Scenes/camera/player_controled_camera.tscn" id="3_glbsb"]
 [ext_resource type="Script" path="res://Scenes/turrets/components/rotation.gd" id="4_56qq4"]
 [ext_resource type="Script" path="res://Scenes/turrets/components/sounds.gd" id="4_urjml"]
@@ -8,6 +9,9 @@
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_yh10a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_avcqi")
 
 [node name="rotation" type="Node2D" parent="."]
 script = ExtResource("4_56qq4")
@@ -26,8 +30,14 @@ metadata/_edit_lock_ = true
 [node name="weapon_slot" type="Node2D" parent="weapons/left_barrel"]
 metadata/_edit_lock_ = true
 
+[node name="left_barrel_pos" type="Marker2D" parent="weapons/left_barrel"]
+position = Vector2(16, -17)
+
 [node name="right_barrel" type="Node2D" parent="weapons"]
 metadata/_edit_lock_ = true
 
 [node name="weapon_slot" type="Node2D" parent="weapons/right_barrel"]
 metadata/_edit_lock_ = true
+
+[node name="right_barrel_pos" type="Marker2D" parent="weapons/right_barrel"]
+position = Vector2(16, 17)
