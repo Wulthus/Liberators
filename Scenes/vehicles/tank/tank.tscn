@@ -38,3 +38,11 @@ metadata/_edit_lock_ = true
 [node name="reverse_velocity_vector" type="Marker2D" parent="markers" index="1"]
 position = Vector2(-96, -1)
 metadata/_edit_lock_ = true
+
+[node name="right_cornnering_force_vector" type="Marker2D" parent="markers" index="2"]
+position = Vector2(0, 100)
+metadata/_edit_lock_ = true
+
+[node name="left_cornering_force_vector" type="Marker2D" parent="markers" index="3"]
+position = Vector2(0, -100)
+metadata/_edit_lock_ = true

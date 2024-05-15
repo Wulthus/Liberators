@@ -48,14 +48,6 @@ script = ExtResource("5_bb45r")
 position = Vector2(-4, 1)
 metadata/_edit_lock_ = true
 
-[node name="right_cornnering_force_vector" type="Marker2D" parent="markers"]
-position = Vector2(0, 100)
-metadata/_edit_lock_ = true
-
-[node name="left_cornering_force_vector" type="Marker2D" parent="markers"]
-position = Vector2(0, -100)
-metadata/_edit_lock_ = true
-
 [node name="sounds" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 

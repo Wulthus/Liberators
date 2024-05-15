@@ -109,17 +109,7 @@ func _physics_process(_delta):
 #-------------------------------------------------SLIP ANGLE AND CORNERING FORCE
 
 #
-#	if state.stopped == false:
-#		if (
-#			state.slip_angle < 0.0 &&
-#			state.slip_angle > -3.14
-#			):
-#			cornering(right_vector, state.slip_angle, props.cornering_force_factor, vehicle_position)
-#		elif (
-#			state.slip_angle > 0.0 &&
-#			state.slip_angle < 3.14			
-#			):
-#			cornering(left_vector, state.slip_angle, props.cornering_force_factor, vehicle_position)
+
 		
 #-----------------------------------------------------SHIFTING GEARS
 	

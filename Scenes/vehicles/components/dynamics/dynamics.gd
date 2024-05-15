@@ -31,7 +31,10 @@ func _physics_process(delta):
 	#-----------------------------------------------------------APPLY FORCES
 	
 	$resistance.apply_resistance();
+	$cornering.apply_cornering_force(vehicle_position);
 	
+
+
 
 #----------------------------------------------------------HELPERS
 
