@@ -11,32 +11,7 @@ var dynamics_state = {
 	"env_dynamic_resistance_factor": 0.25,
 }
 
-func _physics_process(delta):
-	
-	#-----------------------------------------------------------GET GLOBAL VECTORS
-	
-	var vehicle_position: Vector2 = $"..".global_position
-	var forward_vector: Vector2 = $"../markers/forward_velocity_vector".global_position
-	var reverse_vector: Vector2 = $"../markers/reverse_velocity_vector".global_position
-	var left_vector: Vector2 = $"../markers/left_cornering_force_vector".global_position
-	var right_vector: Vector2 = $"../markers/right_cornnering_force_vector".global_position
-	
-	#-----------------------------------------------------------UPDATE STATE
-	
-	check_velocity();
-	check_stopped();
-	check_slip_angle(forward_vector, vehicle_position);
-	check_angular_velocity();
-	
-	#-----------------------------------------------------------APPLY FORCES
-	
-	$resistance.apply_resistance();
-	$cornering.apply_cornering_force(vehicle_position);
-	
-
-
-
-#----------------------------------------------------------HELPERS
+#----------------------------------------------------------METHODS
 
 func check_velocity():
 	dynamics_state.velocity = $"..".get_linear_velocity();
@@ -55,3 +30,32 @@ func check_slip_angle(forward_vector, vehicle_position):
 		
 func check_angular_velocity():
 	dynamics_state.angular_velocity = $"..".get_angular_velocity()
+
+func _physics_process(delta):
+	
+	#-----------------------------------------------------------GET GLOBAL VECTORS
+	
+	var vehicle_position: Vector2 = $"..".global_position
+	var forward_vector: Vector2 = $"../markers/forward_velocity_vector".global_position
+	var reverse_vector: Vector2 = $"../markers/reverse_velocity_vector".global_position
+	var left_vector: Vector2 = $"../markers/left_cornering_force_vector".global_position
+	var right_vector: Vector2 = $"../markers/right_cornnering_force_vector".global_position
+	
+	#-----------------------------------------------------------UPDATE STATE
+	
+	check_velocity();
+	check_stopped();
+	check_slip_angle(forward_vector, vehicle_position);
+	check_angular_velocity();
+	
+	#-----------------------------------------------------------APPLY PASSIVE FORCES
+	
+	$resistance.apply_resistance();
+	$cornering.apply_cornering_force(vehicle_position);
+	
+
+
+
+
+
+

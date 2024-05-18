@@ -4,9 +4,9 @@ func apply_cornering_force(vehicle_position):
 	if $"..".dynamics_state.stopped == false:
 		
 		var slip_angle = $"..".dynamics_state.slip_angle;
-		var left_vector = $"../../markers/left_cornering_force_vector";
-		var right_vector = $"../../markers/right_cornnering_force_vector";
-		var cornering_force_factor = $"../../props".props.cornering_force_factor;
+		var left_vector = $"../../markers/left_cornering_force_vector".position;
+		var right_vector = $"../../markers/right_cornnering_force_vector".position;
+		var cornering_force_factor = $"../../specs".specs.cornering_force_factor;
 		
 		if (
 			slip_angle < 0.0 &&

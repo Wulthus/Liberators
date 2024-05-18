@@ -1,19 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://bw6e7n8er008w"]
+[gd_scene load_steps=21 format=3 uid="uid://bw6e7n8er008w"]
 
 [ext_resource type="Script" path="res://Scenes/vehicles/vehicle.gd" id="1_36vkm"]
 [ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/dynamics.gd" id="3_nx84k"]
 [ext_resource type="PackedScene" uid="uid://b6kkcll15ts6t" path="res://Scenes/camera/player_controled_camera.tscn" id="3_p2lsg"]
 [ext_resource type="Script" path="res://Scenes/vehicles/components/engine.gd" id="4_b2tig"]
 [ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/resistance.gd" id="4_gonie"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/acceleration.gd" id="5_7ygcw"]
 [ext_resource type="Script" path="res://Scenes/vehicles/components/weapons.gd" id="5_bb45r"]
-[ext_resource type="Script" path="res://Scenes/vehicles/acceleration.gd" id="5_jnir4"]
-[ext_resource type="Script" path="res://Scenes/vehicles/cornering.gd" id="6_ukpjn"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/cornering.gd" id="6_j1bna"]
 [ext_resource type="AudioStream" uid="uid://cb8ueqbwk1p1v" path="res://Assets/sounds/fwd_gear.mp3" id="6_uua6k"]
-[ext_resource type="Script" path="res://Scenes/vehicles/brakes.gd" id="7_mvyr2"]
 [ext_resource type="AudioStream" uid="uid://cphaana6mkhnt" path="res://Assets/sounds/rws_gear.mp3" id="7_r8fys"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/braking.gd" id="7_ylody"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/mechanics.gd" id="8_6v7vn"]
 [ext_resource type="AudioStream" uid="uid://tbneuxvfqkrc" path="res://Assets/sounds/engine_idle.wav" id="8_j7o3l"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/gearbox.gd" id="9_5j16s"]
 [ext_resource type="AudioStream" uid="uid://tpkx8gx87fi5" path="res://Assets/sounds/engine_revup.wav" id="9_sbcky"]
 [ext_resource type="AudioStream" uid="uid://dy5fo03v0evpo" path="res://Assets/sounds/engine_revloop.wav" id="10_6i1su"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/brakes.gd" id="11_3ka1l"]
 [ext_resource type="AudioStream" uid="uid://dfjxd6i4ai3b1" path="res://Assets/sounds/engine_revdown.wav" id="11_tx0ri"]
 [ext_resource type="AudioStream" uid="uid://bykgmy1ch2lph" path="res://Assets/sounds/.brakeswav.wav" id="12_sov5h"]
 [ext_resource type="AudioStream" uid="uid://df00rtigksygg" path="res://Assets/sounds/tracks.wav" id="13_qtrsk"]
@@ -30,16 +33,25 @@ script = ExtResource("3_nx84k")
 script = ExtResource("4_gonie")
 
 [node name="acceleration" type="Node2D" parent="dynamics"]
-script = ExtResource("5_jnir4")
+script = ExtResource("5_7ygcw")
 
 [node name="cornering" type="Node2D" parent="dynamics"]
-script = ExtResource("6_ukpjn")
+script = ExtResource("6_j1bna")
 
-[node name="brakes" type="Node2D" parent="dynamics"]
-script = ExtResource("7_mvyr2")
+[node name="braking" type="Node2D" parent="dynamics"]
+script = ExtResource("7_ylody")
 
-[node name="engine" type="Node2D" parent="."]
+[node name="mechanics" type="Node2D" parent="."]
+script = ExtResource("8_6v7vn")
+
+[node name="gearbox" type="Node2D" parent="mechanics"]
+script = ExtResource("9_5j16s")
+
+[node name="engine" type="Node2D" parent="mechanics"]
 script = ExtResource("4_b2tig")
+
+[node name="brakes" type="Node2D" parent="mechanics"]
+script = ExtResource("11_3ka1l")
 
 [node name="weapons" type="Node2D" parent="."]
 script = ExtResource("5_bb45r")

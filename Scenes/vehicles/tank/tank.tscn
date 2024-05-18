@@ -9,19 +9,16 @@ size = Vector2(134, 82)
 
 [node name="vehicle" instance=ExtResource("1_qlxj1")]
 
-[node name="physics@center_of_gravity" type="Marker2D" parent="." index="0"]
-metadata/_edit_lock_ = true
-
-[node name="props" type="Node2D" parent="." index="1"]
+[node name="specs" type="Node2D" parent="." index="0"]
 script = ExtResource("2_b5e50")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_3otdc")
 debug_color = Color(0.435294, 0.254902, 0.0509804, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_3ss5y")
 metadata/_edit_lock_ = true
 
@@ -31,18 +28,22 @@ position = Vector2(11, 0)
 [node name="defensive_turret_pos" type="Marker2D" parent="weapons" index="1"]
 position = Vector2(-36, 0)
 
-[node name="forward_velocity_vector" type="Marker2D" parent="markers" index="0"]
+[node name="center_of_gravity" type="Marker2D" parent="markers" index="0"]
+position = Vector2(4, -1)
+metadata/_edit_lock_ = true
+
+[node name="forward_velocity_vector" type="Marker2D" parent="markers" index="1"]
 position = Vector2(104, -1)
 metadata/_edit_lock_ = true
 
-[node name="reverse_velocity_vector" type="Marker2D" parent="markers" index="1"]
+[node name="reverse_velocity_vector" type="Marker2D" parent="markers" index="2"]
 position = Vector2(-96, -1)
 metadata/_edit_lock_ = true
 
-[node name="right_cornnering_force_vector" type="Marker2D" parent="markers" index="2"]
+[node name="right_cornnering_force_vector" type="Marker2D" parent="markers" index="3"]
 position = Vector2(0, 100)
 metadata/_edit_lock_ = true
 
-[node name="left_cornering_force_vector" type="Marker2D" parent="markers" index="3"]
+[node name="left_cornering_force_vector" type="Marker2D" parent="markers" index="4"]
 position = Vector2(0, -100)
 metadata/_edit_lock_ = true

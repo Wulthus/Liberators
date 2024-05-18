@@ -7,7 +7,7 @@ var vehicle_props = {
 
 }
 
-var vehicle_type_props = {
+var vehicle_specs = {
 	"tank" = {
 		"engine_power": 150.0,
 		"brake_power": 150.0,
