@@ -21,87 +21,91 @@
 [ext_resource type="AudioStream" uid="uid://bykgmy1ch2lph" path="res://Assets/sounds/.brakeswav.wav" id="12_sov5h"]
 [ext_resource type="AudioStream" uid="uid://df00rtigksygg" path="res://Assets/sounds/tracks.wav" id="13_qtrsk"]
 
-[node name="vehicle" type="RigidBody2D"]
+[node name="player_vehicle" type="Node2D"]
+
+[node name="vehicle" type="RigidBody2D" parent="."]
+inertia = 2.5
+gravity_scale = 0.0
 script = ExtResource("1_36vkm")
 
-[node name="player_controled_camera" parent="." instance=ExtResource("3_p2lsg")]
+[node name="player_controled_camera" parent="vehicle" instance=ExtResource("3_p2lsg")]
 
-[node name="dynamics" type="Node2D" parent="."]
+[node name="dynamics" type="Node2D" parent="vehicle"]
 script = ExtResource("3_nx84k")
 
-[node name="resistance" type="Node2D" parent="dynamics"]
+[node name="resistance" type="Node2D" parent="vehicle/dynamics"]
 script = ExtResource("4_gonie")
 
-[node name="acceleration" type="Node2D" parent="dynamics"]
+[node name="acceleration" type="Node2D" parent="vehicle/dynamics"]
 script = ExtResource("5_7ygcw")
 
-[node name="cornering" type="Node2D" parent="dynamics"]
+[node name="cornering" type="Node2D" parent="vehicle/dynamics"]
 script = ExtResource("6_j1bna")
 
-[node name="braking" type="Node2D" parent="dynamics"]
+[node name="braking" type="Node2D" parent="vehicle/dynamics"]
 script = ExtResource("7_ylody")
 
-[node name="mechanics" type="Node2D" parent="."]
+[node name="mechanics" type="Node2D" parent="vehicle"]
 script = ExtResource("8_6v7vn")
 
-[node name="gearbox" type="Node2D" parent="mechanics"]
+[node name="gearbox" type="Node2D" parent="vehicle/mechanics"]
 script = ExtResource("9_5j16s")
 
-[node name="engine" type="Node2D" parent="mechanics"]
+[node name="engine" type="Node2D" parent="vehicle/mechanics"]
 script = ExtResource("4_b2tig")
 
-[node name="brakes" type="Node2D" parent="mechanics"]
+[node name="brakes" type="Node2D" parent="vehicle/mechanics"]
 script = ExtResource("11_3ka1l")
 
-[node name="weapons" type="Node2D" parent="."]
+[node name="weapons" type="Node2D" parent="vehicle"]
 script = ExtResource("5_bb45r")
 
-[node name="markers" type="Node2D" parent="."]
+[node name="markers" type="Node2D" parent="vehicle"]
 position = Vector2(-4, 1)
 metadata/_edit_lock_ = true
 
-[node name="sounds" type="Node2D" parent="."]
+[node name="sounds" type="Node2D" parent="vehicle"]
 metadata/_edit_lock_ = true
 
-[node name="forward_gear" type="AudioStreamPlayer2D" parent="sounds"]
+[node name="forward_gear" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("6_uua6k")
 metadata/_edit_lock_ = true
 
-[node name="reverse_gear" type="AudioStreamPlayer2D" parent="sounds"]
+[node name="reverse_gear" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("7_r8fys")
 metadata/_edit_lock_ = true
 
-[node name="engine_idle" type="AudioStreamPlayer2D" parent="sounds"]
+[node name="engine_idle" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("8_j7o3l")
 volume_db = -15.0
 pitch_scale = 0.8
 max_distance = 500.0
 metadata/_edit_lock_ = true
 
-[node name="engine_revup" type="AudioStreamPlayer2D" parent="sounds"]
+[node name="engine_revup" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("9_sbcky")
 volume_db = -11.0
 pitch_scale = 0.8
 metadata/_edit_lock_ = true
 
-[node name="engine_revloop" type="AudioStreamPlayer2D" parent="sounds"]
+[node name="engine_revloop" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("10_6i1su")
 volume_db = -11.0
 pitch_scale = 0.8
 metadata/_edit_lock_ = true
 
-[node name="engine_revdown" type="AudioStreamPlayer2D" parent="sounds"]
+[node name="engine_revdown" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("11_tx0ri")
 volume_db = -11.0
 pitch_scale = 0.8
 metadata/_edit_lock_ = true
 
-[node name="brakes" type="AudioStreamPlayer2D" parent="sounds"]
+[node name="brakes" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("12_sov5h")
 volume_db = -16.0
 pitch_scale = 0.4
 metadata/_edit_lock_ = true
 
-[node name="tracks" type="AudioStreamPlayer2D" parent="sounds"]
+[node name="tracks" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("13_qtrsk")
 metadata/_edit_lock_ = true

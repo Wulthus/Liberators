@@ -9,11 +9,13 @@ var vehicle_props = {
 
 var vehicle_specs = {
 	"tank" = {
-		"engine_power": 150.0,
-		"brake_power": 150.0,
-		"mass_factor": 2.5,
-		"torque": 3.0,
+		"mass_kg": 55000,
 		"inertia_factor": 2.5,
+		
+		"engine_power": 2750000.0,
+		"brake_power": 2750000.0,
+		"torque": 3.0,
+
 		"cornering_force_factor": 2000.0,
 		"rolling_resistance": 3.0,
 	

@@ -10,6 +10,8 @@ func _physics_process(delta):
 	
 	#------------------------------------------------MOVEMENT INPUTS
 	
+	print(mechanics_state);
+	
 	if Input.is_action_pressed("forward"):
 		match mechanics_state.gear:
 			"forward":

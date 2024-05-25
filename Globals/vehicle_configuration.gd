@@ -1,6 +1,6 @@
 extends Node
 
-var chasis_type = "tank_chasis"
+var chasis_type = "tank"
 
 var turrets = {
 	"offensive_turret" = {

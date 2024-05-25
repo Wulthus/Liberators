@@ -22,4 +22,5 @@ func apply_cornering_force(vehicle_position):
 func cornering(direction, angle, max_value, pos):
 	var force_multiplier = abs(max_value * sin(angle))
 	var cornering_force: Vector2 = (direction - pos).normalized() * force_multiplier
+	print(cornering_force)
 	$"../..".apply_central_force(cornering_force)

@@ -4,7 +4,7 @@ var test_peer = ENetMultiplayerPeer.new()
 @export var player_scene: PackedScene
 
 var player_vehicle_name = "player_vehicle"
-var vehicle_path_string = "res://Scenes/vehicles/{vehicle}.tscn"
+var vehicle_path_string = "res://Scenes/vehicles/{vehicle}/{vehicle}.tscn"
 
 func _on_host_button_pressed():
 	test_peer.create_server(135)
@@ -20,7 +20,7 @@ func add_vehicle(id = 1):
 	var new_vehicle = vehicle_scene.instantiate()
 	new_vehicle.name = str(id)
 	call_deferred("add_child", new_vehicle)
-	call_deferred("add_turrets")
+#	call_deferred("add_turrets")
 
 	
 func add_turrets():

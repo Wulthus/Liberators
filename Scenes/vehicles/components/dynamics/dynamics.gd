@@ -4,6 +4,7 @@ var dynamics_props = GameConstants.vehicle_props.dynamics
 
 var dynamics_state = {
 	"velocity": Vector2(0, 0),
+	"velocity_length": 0.0,
 	"stopped": true,
 	"slip_angle": 0.0,
 	"angular_velocity": 0,
@@ -15,6 +16,7 @@ var dynamics_state = {
 
 func check_velocity():
 	dynamics_state.velocity = $"..".get_linear_velocity();
+	dynamics_state.velocity_length = dynamics_state.velocity.length()
 	
 func check_stopped():
 	if (dynamics_state.velocity.length() < 2.0):
@@ -42,6 +44,8 @@ func _physics_process(delta):
 	var right_vector: Vector2 = $"../markers/right_cornnering_force_vector".global_position
 	
 	#-----------------------------------------------------------UPDATE STATE
+	
+	print(dynamics_state)
 	
 	check_velocity();
 	check_stopped();
