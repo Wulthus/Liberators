@@ -14,10 +14,10 @@ var vehicle_specs = {
 		
 		"engine_power": 2750000.0,
 		"brake_power": 2750000.0,
-		"torque": 3.0,
+		"torque": 35.0,
 
 		"cornering_force_factor": 2000.0,
-		"rolling_resistance": 3.0,
+		"rolling_resistance": 30.0,
 	
 		"max_speed": 216.0,
 	}

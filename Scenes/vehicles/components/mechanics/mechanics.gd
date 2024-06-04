@@ -58,6 +58,11 @@ func _physics_process(delta):
 			_:
 				print("Error: tank_chasis reverse movement match statement did not recognise following gear setting: ", mechanics_state.gear)	
 				
+	if Input.is_action_pressed("left_turn"):
+		$steering.turn("left")
+	if Input.is_action_pressed("right_turn"):
+		$steering.turn("right")
+				
 
 	#------------------------------------------------SHIFTING GEARS
 

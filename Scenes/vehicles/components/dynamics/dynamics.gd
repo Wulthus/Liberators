@@ -54,7 +54,8 @@ func _physics_process(delta):
 	
 	#-----------------------------------------------------------APPLY PASSIVE FORCES
 	
-	$resistance.apply_resistance();
+	$resistance.apply_linear_resistance();
+	$resistance.apply_rolling_resistance();
 	$cornering.apply_cornering_force(vehicle_position);
 	
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-func apply_resistance():
+func apply_linear_resistance():
 	if $"..".dynamics_state.stopped == false:
 		
 		var dynamic_component = $"..".dynamics_state.env_dynamic_resistance_factor;
@@ -14,8 +14,10 @@ func apply_resistance():
 		
 		$"../..".apply_central_force(resistance_vector)
 
-#func apply_resistance(velocity, factor):
-#	if $"..".dynamics_state.stopped == false:
-#		var force_multiplyer = ((1.0+factor)**(abs(velocity.x) + abs(velocity.y)))-1
-#		var resistance_vector = (-velocity.normalized() * force_multiplyer) * factor
-#		$"../..".apply_central_force(resistance_vector)
+func apply_rolling_resistance():
+	var angular_velocity = $"..".dynamics_state.angular_velocity
+	if angular_velocity > 0 && Input.is_action_pressed("right_turn") == false:
+		$"../..".apply_torque(-$"../../specs".specs.rolling_resistance)
+
+	if angular_velocity < 0 && Input.is_action_pressed("left_turn") == false:
+		$"../..".apply_torque($"../../specs".specs.rolling_resistance)
