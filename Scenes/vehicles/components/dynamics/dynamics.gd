@@ -8,8 +8,6 @@ var dynamics_state = {
 	"stopped": true,
 	"slip_angle": 0.0,
 	"angular_velocity": 0,
-	"env_static_resistance_factor": 0.03,
-	"env_dynamic_resistance_factor": 0.25,
 }
 
 #----------------------------------------------------------METHODS

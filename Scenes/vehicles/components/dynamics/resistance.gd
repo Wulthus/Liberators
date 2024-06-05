@@ -3,8 +3,8 @@ extends Node2D
 func apply_linear_resistance():
 	if $"..".dynamics_state.stopped == false:
 		
-		var dynamic_component = $"..".dynamics_state.env_dynamic_resistance_factor;
-		var static_component = $"..".dynamics_state.env_static_resistance_factor;
+		var dynamic_component = $"../../specs".specs.dynamic_resistance_factor;
+		var static_component = $"../../specs".specs.static_resistance_factor;
 		var slip_angle = $"..".dynamics_state.slip_angle
 		var velocity = $"..".dynamics_state.velocity
 		
@@ -16,6 +16,7 @@ func apply_linear_resistance():
 
 func apply_rolling_resistance():
 	var angular_velocity = $"..".dynamics_state.angular_velocity
+	
 	if angular_velocity > 0 && Input.is_action_pressed("right_turn") == false:
 		$"../..".apply_torque(-$"../../specs".specs.rolling_resistance)
 
