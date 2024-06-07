@@ -1,5 +1,7 @@
 extends Node2D
 
+#----------------------------------------------------------------------------MOVEMENT RESISTANCE
+
 func apply_linear_resistance():
 	if $"..".dynamics_state.stopped == false:
 		
@@ -14,7 +16,11 @@ func apply_linear_resistance():
 		
 		$"../..".apply_central_force(resistance_vector)
 
+
+#----------------------------------------------------------------------------ROLLING RESISTANCE
+
 func apply_rolling_resistance():
+	
 	var angular_velocity = $"..".dynamics_state.angular_velocity
 	
 	if angular_velocity > 0 && Input.is_action_pressed("right_turn") == false:
