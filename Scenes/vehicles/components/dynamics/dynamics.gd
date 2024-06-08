@@ -43,8 +43,6 @@ func _physics_process(delta):
 	
 	#-----------------------------------------------------------UPDATE STATE
 	
-	print(dynamics_state)
-	
 	check_velocity();
 	check_stopped();
 	check_slip_angle(forward_vector, vehicle_position);

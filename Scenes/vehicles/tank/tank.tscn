@@ -50,3 +50,8 @@ metadata/_edit_lock_ = true
 [node name="left_cornering_force_vector" type="Marker2D" parent="vehicle/markers" index="4"]
 position = Vector2(4, -101)
 metadata/_edit_lock_ = true
+
+[connection signal="throtte_applied" from="vehicle/mechanics/engine" to="vehicle/sounds" method="_on_engine_throtte_applied"]
+[connection signal="throttle_released" from="vehicle/mechanics/engine" to="vehicle/sounds" method="_on_engine_throttle_released"]
+[connection signal="finished" from="vehicle/sounds/engine_revup" to="vehicle/sounds" method="_on_engine_revup_finished"]
+[connection signal="finished" from="vehicle/sounds/engine_revdown" to="vehicle/sounds" method="_on_engine_revdown_finished"]

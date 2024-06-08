@@ -1,26 +1,27 @@
-[gd_scene load_steps=22 format=3 uid="uid://bw6e7n8er008w"]
+[gd_scene load_steps=23 format=3 uid="uid://bw6e7n8er008w"]
 
 [ext_resource type="Script" path="res://Scenes/vehicles/vehicle.gd" id="1_36vkm"]
 [ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/dynamics.gd" id="3_nx84k"]
 [ext_resource type="PackedScene" uid="uid://b6kkcll15ts6t" path="res://Scenes/camera/player_controled_camera.tscn" id="3_p2lsg"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/engine.gd" id="4_b2tig"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/resistance.gd" id="4_gonie"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/acceleration.gd" id="5_7ygcw"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/engine/engine.gd" id="4_b2tig"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/resistance/resistance.gd" id="4_gonie"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/acceleration/acceleration.gd" id="5_7ygcw"]
 [ext_resource type="Script" path="res://Scenes/vehicles/components/weapons.gd" id="5_bb45r"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/cornering.gd" id="6_j1bna"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/cornering/cornering.gd" id="6_j1bna"]
 [ext_resource type="AudioStream" uid="uid://cb8ueqbwk1p1v" path="res://Assets/sounds/fwd_gear.mp3" id="6_uua6k"]
 [ext_resource type="AudioStream" uid="uid://cphaana6mkhnt" path="res://Assets/sounds/rws_gear.mp3" id="7_r8fys"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/braking.gd" id="7_ylody"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/braking/braking.gd" id="7_ylody"]
 [ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/mechanics.gd" id="8_6v7vn"]
 [ext_resource type="AudioStream" uid="uid://tbneuxvfqkrc" path="res://Assets/sounds/engine_idle.wav" id="8_j7o3l"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/gearbox.gd" id="9_5j16s"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/gearbox/gearbox.gd" id="9_5j16s"]
 [ext_resource type="AudioStream" uid="uid://tpkx8gx87fi5" path="res://Assets/sounds/engine_revup.wav" id="9_sbcky"]
 [ext_resource type="AudioStream" uid="uid://dy5fo03v0evpo" path="res://Assets/sounds/engine_revloop.wav" id="10_6i1su"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/brakes.gd" id="11_3ka1l"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/brakes/brakes.gd" id="11_3ka1l"]
 [ext_resource type="AudioStream" uid="uid://dfjxd6i4ai3b1" path="res://Assets/sounds/engine_revdown.wav" id="11_tx0ri"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/torque.gd" id="12_ut8wn"]
-[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/steering.gd" id="13_jsu0v"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/dynamics/torque/torque.gd" id="12_ut8wn"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/mechanics/steering/steering.gd" id="13_jsu0v"]
 [ext_resource type="AudioStream" uid="uid://df00rtigksygg" path="res://Assets/sounds/tracks.wav" id="13_qtrsk"]
+[ext_resource type="Script" path="res://Scenes/vehicles/components/sounds/sounds.gd" id="15_bm2ec"]
 
 [node name="player_vehicle" type="Node2D"]
 
@@ -72,6 +73,7 @@ position = Vector2(-4, 1)
 metadata/_edit_lock_ = true
 
 [node name="sounds" type="Node2D" parent="vehicle"]
+script = ExtResource("15_bm2ec")
 metadata/_edit_lock_ = true
 
 [node name="forward_gear" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
@@ -115,3 +117,6 @@ metadata/_edit_lock_ = true
 [node name="tracks" type="AudioStreamPlayer2D" parent="vehicle/sounds"]
 stream = ExtResource("13_qtrsk")
 metadata/_edit_lock_ = true
+
+[connection signal="forward_gear" from="vehicle/mechanics/gearbox" to="vehicle/sounds" method="_on_gearbox_forward_gear"]
+[connection signal="reverse_gear" from="vehicle/mechanics/gearbox" to="vehicle/sounds" method="_on_gearbox_reverse_gear"]

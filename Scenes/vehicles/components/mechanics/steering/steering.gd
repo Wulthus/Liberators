@@ -7,4 +7,4 @@ func turn(direction):
 		"right":
 			$"../../dynamics/torque".torque("right");
 		_:
-			print("lol");
+			print("ERROR: steering match statement did not recognise following direction: ", direction);
