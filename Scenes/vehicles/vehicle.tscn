@@ -120,3 +120,5 @@ metadata/_edit_lock_ = true
 
 [connection signal="forward_gear" from="vehicle/mechanics/gearbox" to="vehicle/sounds" method="_on_gearbox_forward_gear"]
 [connection signal="reverse_gear" from="vehicle/mechanics/gearbox" to="vehicle/sounds" method="_on_gearbox_reverse_gear"]
+[connection signal="brakes_applied" from="vehicle/mechanics/brakes" to="vehicle/sounds" method="_on_brakes_brakes_applied"]
+[connection signal="brakes_released" from="vehicle/mechanics/brakes" to="vehicle/sounds" method="_on_brakes_brakes_released"]
