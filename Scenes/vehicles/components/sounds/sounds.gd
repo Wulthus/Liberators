@@ -34,7 +34,7 @@ func _on_gearbox_reverse_gear():
 
 #------------------------------------------------------------------------THROTTLE APPLIED/RELEASED
 
-func _on_engine_throtte_applied():
+func _on_engine_throttle_applied():
 	audio_state.play_running = true;
 	audio_state.play_idle = false;
 	if (audio_state.revved_up == false):
@@ -56,7 +56,7 @@ func _on_engine_throttle_released():
 #------------------------------------------------------------------------BRAKES
 
 func _on_brakes_brakes_applied():
-	if ($brakes.playing == false):
+	if ($brakes.playing == false && $"../dynamics".dynamics_state.stopped == false):
 		$brakes.play();
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhfrfpin1nm7f"]
+[gd_scene load_steps=6 format=3 uid="uid://dhfrfpin1nm7f"]
 
 [ext_resource type="PackedScene" uid="uid://bw6e7n8er008w" path="res://Scenes/vehicles/vehicle.tscn" id="1_qlxj1"]
 [ext_resource type="Texture2D" uid="uid://u0daqrw27ysq" path="res://Assets/tank_body.png" id="2_3ss5y"]
 [ext_resource type="Script" path="res://Scenes/vehicles/tank/specs.gd" id="2_kplqu"]
+[ext_resource type="AudioStream" uid="uid://cauwb5ypxptgo" path="res://Assets/sounds/brakeswav.wav" id="4_c84ay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3otdc"]
 size = Vector2(134, 82)
@@ -51,5 +52,8 @@ metadata/_edit_lock_ = true
 position = Vector2(4, -101)
 metadata/_edit_lock_ = true
 
-[connection signal="throtte_applied" from="vehicle/mechanics/engine" to="vehicle/sounds" method="_on_engine_throtte_applied"]
+[node name="brakes" parent="vehicle/sounds" index="6"]
+stream = ExtResource("4_c84ay")
+
+[connection signal="throttle_applied" from="vehicle/mechanics/engine" to="vehicle/sounds" method="_on_engine_throttle_applied"]
 [connection signal="throttle_released" from="vehicle/mechanics/engine" to="vehicle/sounds" method="_on_engine_throttle_released"]
