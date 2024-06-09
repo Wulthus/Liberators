@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bw6e7n8er008w" path="res://Scenes/vehicles/vehicle.tscn" id="1_qlxj1"]
 [ext_resource type="Texture2D" uid="uid://u0daqrw27ysq" path="res://Assets/tank_body.png" id="2_3ss5y"]
 [ext_resource type="Script" path="res://Scenes/vehicles/tank/specs.gd" id="2_kplqu"]
-[ext_resource type="AudioStream" uid="uid://cauwb5ypxptgo" path="res://Assets/sounds/brakeswav.wav" id="4_c84ay"]
+[ext_resource type="AudioStream" uid="uid://cauwb5ypxptgo" path="res://Assets/sounds/vehicles/tank/brakeswav.wav" id="4_c84ay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3otdc"]
 size = Vector2(134, 82)

@@ -13,8 +13,10 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("forward"):
 		match mechanics_state.gear:
 			"forward":
+				$brakes.release_brakes();
 				$engine.apply_throttle();
 			"reverse":
+				$engine.release_throttle();
 				$brakes.apply_brakes()
 			_:
 				print("Error: tank_chasis forward movement match statement did not recognise following gear setting: ", mechanics_state.gear)
@@ -31,8 +33,10 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("reverse"):
 		match mechanics_state.gear:
 			"forward":
+				$engine.release_throttle();
 				$brakes.apply_brakes();
 			"reverse":
+				$brakes.release_brakes();
 				$engine.apply_throttle();
 			_:
 				print("Error: tank_chasis reverse movement match statement did not recognise following gear setting: ", mechanics_state.gear)

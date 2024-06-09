@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dfjxd6i4ai3b1"
-path="res://.godot/imported/engine_revdown.wav-2d1feea0eabf577ec9bd0a86c9623d39.sample"
+path="res://.godot/imported/engine_revdown.wav-b1365a8d8f0bf109ab2ea2b837955fff.sample"
 
 [deps]
 
-source_file="res://Assets/sounds/engine_revdown.wav"
-dest_files=["res://.godot/imported/engine_revdown.wav-2d1feea0eabf577ec9bd0a86c9623d39.sample"]
+source_file="res://Assets/sounds/vehicles/tank/engine_revdown.wav"
+dest_files=["res://.godot/imported/engine_revdown.wav-b1365a8d8f0bf109ab2ea2b837955fff.sample"]
 
 [params]
 

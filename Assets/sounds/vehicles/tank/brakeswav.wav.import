@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cauwb5ypxptgo"
-path="res://.godot/imported/brakeswav.wav-f356d8ac86e47b8b15273c69ac55f3de.sample"
+path="res://.godot/imported/brakeswav.wav-9417a82e05e57f2ee7425d90ca36e8e9.sample"
 
 [deps]
 
-source_file="res://Assets/sounds/brakeswav.wav"
-dest_files=["res://.godot/imported/brakeswav.wav-f356d8ac86e47b8b15273c69ac55f3de.sample"]
+source_file="res://Assets/sounds/vehicles/tank/brakeswav.wav"
+dest_files=["res://.godot/imported/brakeswav.wav-9417a82e05e57f2ee7425d90ca36e8e9.sample"]
 
 [params]
 

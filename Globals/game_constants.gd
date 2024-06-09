@@ -21,7 +21,8 @@ var vehicle_specs = {
 		"static_resistance_factor": 0.03,
 		"dynamic_resistance_factor": 0.20,
 	
-		"max_speed": 216.0,
+		
+		"rumble_max_speed": 216.0,
 	}
 }
 

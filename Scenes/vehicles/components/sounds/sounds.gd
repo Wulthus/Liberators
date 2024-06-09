@@ -13,9 +13,27 @@ func _process(_delta):
 	
 	print (audio_state);
 	
+	#----------------------------------------------------------------------RUMBLE
+	
+	if ($"../dynamics".dynamics_state.stopped == false && $rumble.playing == false):
+		$rumble.play()
+	elif ($"../dynamics".dynamics_state.stopped == true && $rumble.playing == true):
+		$rumble.stop()
+		
+	$rumble.set_pitch_scale(
+		0.9 + (($"../dynamics".dynamics_state.velocity_length / $"../specs".specs.rumble_max_speed)*0.3)
+	)
+	$rumble.set_volume_db(
+		-4.0 + (($"../dynamics".dynamics_state.velocity_length / $"../specs".specs.rumble_max_speed)*3)
+	)
+	
+	#----------------------------------------------------------------------ENGINE IDLE
+	
 	if (audio_state.play_idle == true && $engine_idle.playing == false):
 		$engine_revloop.stop();
 		$engine_idle.play();
+	
+	#----------------------------------------------------------------------ENGINE RUNNING
 	
 	if (audio_state.play_running == true && $engine_revloop.playing == false):
 		$engine_idle.stop();
@@ -58,8 +76,5 @@ func _on_engine_throttle_released():
 func _on_brakes_brakes_applied():
 	if ($brakes.playing == false && $"../dynamics".dynamics_state.stopped == false):
 		$brakes.play();
-
-
-func _on_brakes_brakes_released():
-	if ($brakes.playing == true):
+	elif ($brakes.playing == true && $"../dynamics".dynamics_state.stopped == true):
 		$brakes.stop();

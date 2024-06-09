@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://tbneuxvfqkrc"
-path="res://.godot/imported/engine_idle.wav-58a5bc32b71286abc0555efbb7480464.sample"
+path="res://.godot/imported/engine_idle.wav-fd772990652d02ff33f23792b2200653.sample"
 
 [deps]
 
-source_file="res://Assets/sounds/engine_idle.wav"
-dest_files=["res://.godot/imported/engine_idle.wav-58a5bc32b71286abc0555efbb7480464.sample"]
+source_file="res://Assets/sounds/vehicles/tank/engine_idle.wav"
+dest_files=["res://.godot/imported/engine_idle.wav-fd772990652d02ff33f23792b2200653.sample"]
 
 [params]
 

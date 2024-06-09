@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dy5fo03v0evpo"
-path="res://.godot/imported/engine_revloop.wav-966762f7e09727c43166e783ae200bba.sample"
+path="res://.godot/imported/engine_revloop.wav-76fca55f6c0a07e7ca865c53b74759a8.sample"
 
 [deps]
 
-source_file="res://Assets/sounds/engine_revloop.wav"
-dest_files=["res://.godot/imported/engine_revloop.wav-966762f7e09727c43166e783ae200bba.sample"]
+source_file="res://Assets/sounds/vehicles/tank/engine_revloop.wav"
+dest_files=["res://.godot/imported/engine_revloop.wav-76fca55f6c0a07e7ca865c53b74759a8.sample"]
 
 [params]
 
